@@ -17,7 +17,8 @@
     </style>
     <link rel="icon" href="U-removebg-preview.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+
+  </head>
 <body class="bg-dark">
 
     <header  style="position: fixed; width: 100%; z-index: 1;" >
@@ -196,29 +197,29 @@
   <p>Tel: +91-953-944-8945</p>
             </div >
             <div  class=" p-5 col-md-7 col-sm-12  col-12"style=" background-color: #171f2f;font-weight: 200;color: white;   " >
-                <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbzOm379Txn9H-CJJ8gUjQ6GJJNz42jrNfLaI38ZWbjHta_gu8sap4PKfgu8Xv9frWvP/exec" style="   width: 16rem; " >
+                <form id="submit-form" action="" style=" width: 16rem; " >
                   <label for="Full Name">Full Name</label>
                   <input name="full" type="text"class="form-control" placeholder="eg: john" required pattern="[A-Za-z]+"><br>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" placeholder="eg: info@gmail.com" id="exampleInputEmail1" aria-describedby="emailHelp"required  >
+                      <input name="email" type="email" class="form-control" placeholder="eg: info@gmail.com" id="exampleInputEmail1" aria-describedby="emailHelp"required  >
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     
                     <div class="form-group">
                       <label for="exampleInputPhone1">Phone</label>
-                      <input type="tel" class="form-control" placeholder="eg: +1-321-654-78" id="exampleInputnumber1"required pattern  ="[0-9]+"  >
-                      <small id="" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+                      <input name="phone" type="tel" class="form-control" placeholder="eg: +1-321-654-78" id="exampleInputnumber1" >
+                      <small id="phone" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
                     </div>
                     <div class="form-group"> 
                       <label  for="exampleInputPassword1">Messages</label>
-                      <textarea class="form-control" cols="30" rows="8" placeholder="Enter your messages here..."></textarea>
+                      <textarea name="Messages" class="form-control" cols="30" rows="8" placeholder="Enter your messages here..."></textarea>
                     </div>
                     <div class="form-group form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1"required>
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn " style="     width: 16rem;background: #00ffffb0;color:aliceblue; border-color: white;margin-top: 1rem;">Submit</button>
+                    <button type="submit" class="btn" style="width: 16rem;background: #00ffffb0;color:aliceblue; border-color: white;margin-top: 1rem;">Submit</button>
 
                   </form>
             </div>
@@ -262,7 +263,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-   
+
+    
+    <script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbwbED7Xw4YWquPn8N8A4n0Kh3TDVK8fzffqJWEZNjluEx7dfVpYVXtZxFfEAe-YncG1/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  //window.location.href="https://google.com"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
+  </script>
+
 </body>
+
+
 
 </html> 
